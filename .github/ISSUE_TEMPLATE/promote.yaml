@@ -1,0 +1,38 @@
+name: App Promotion
+description: Promote an application to an environment
+title: "New app promotion"
+labels: ["promotion", "tekton"]
+body:
+  - type: markdown
+    attributes:
+      value: >
+        Fill in the fields below to promote and application to the specified
+        environment. On issue creation, a tekton pipeline will be run, updating
+        the appropriate values in order for ArgoCD to make a deployment.
+  - type: input
+    id: app
+    attributes:
+      label: Application
+      description: Which app do you want to promote?
+      placeholder: ex. gift
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Which version of the app do you want to promote?
+      placeholder: ex. 1.2.3
+    validations:
+      required: true
+  - type: dropdown
+    id: environment
+    attributes:
+      label: environment
+      description: Which environment should the app be promoted to?
+      options:
+        - dev
+        - stage
+        - prod
+    validations:
+      required: true
